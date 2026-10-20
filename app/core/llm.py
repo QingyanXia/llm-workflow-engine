@@ -10,7 +10,7 @@ client = OpenAI(
 )
 
 def call_llm(prompt: str) -> str:
-    model_name = "deepseek-v4-pro"  # 修改模型调用
+    model_name = os.getenv("DEEPSEEK_MODEL", "deepseek-v4-pro")
     response = client.chat.completions.create(
         model=model_name,
         messages=[{"role": "user", "content": prompt}]
